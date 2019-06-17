@@ -15,4 +15,8 @@ add_definitions(-DGLEW_STATIC)
 set(CATCH_DIRECTORY catch-2)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${CATCH_DIRECTORY})
 
+# Use cxxopts for command line option parsing
+set(CXXOPTS_DIRECTORY cxxopts-2.1.2)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/external/${CXXOPTS_DIRECTORY})
+
 add_subdirectory(source)
