@@ -13,6 +13,9 @@ using namespace buw;
 
 int main(int argc, char *argv[])
 {
+  /**
+   * Use the cxxopts commandline argument parser.
+   */
   cxxopts::Options options(argv[0], " - Divide & Conquer Closest Points");
   options
     .positional_help("[optional args]")
@@ -34,11 +37,13 @@ int main(int argc, char *argv[])
     exit(0);
   }
 
+  // the coordinates in which the points should be generated
   int minX = result["minX"].as<int>();
   int maxX = result["maxX"].as<int>();
   int minY = result["minY"].as<int>();
   int maxY = result["maxY"].as<int>();
 
+  // the number of points to generate
   int n = result["num"].as<int>();
 
   std::vector<Point> points = generateRandomPoints(n, minX, maxX, minY, maxY);
@@ -46,6 +51,7 @@ int main(int argc, char *argv[])
   std::cout << "Generated " << points.size() << " random points between (x: " << minX << ", y: " << minY << ") and (x: " << maxX << ", y: " << maxY << ")" << std::endl;
   std::cout << std::endl;
 
+  // if the debug flag is set, we will print out all the generated points
   if(result.count("debug")) {
     for(Point point : points) {
       std::cout << std::left  << std::setw(2) << std::setfill(' ') << "x:";
@@ -56,6 +62,7 @@ int main(int argc, char *argv[])
     std::cout << std::endl;
   }
 
+  // use chrono to check performance of the 2 algorithms
   auto start1 = std::chrono::high_resolution_clock::now();
   std::pair<Point, Point> cp = closestPair(points);
   auto finish1 = std::chrono::high_resolution_clock::now();

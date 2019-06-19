@@ -6,6 +6,11 @@
 namespace buw
 {
 
+  /**
+   * Partition a list, so that the items on the left are smaller than the pivot
+   * element and the items on the right are greater than the pivot element.
+   * @returns Iterator pointing at the pivot element.
+   */
   template <typename Iterator, typename Compare>
   Iterator partition(Iterator const& first, Iterator const& last, Compare const& comp)
   {
@@ -23,6 +28,9 @@ namespace buw
     return p;
   }
 
+  /**
+   * The quicksort algorithm.
+   */
   template <typename Iterator, typename Compare>
   void quicksort(Iterator const& first, Iterator const& last, Compare const& comp)
   {

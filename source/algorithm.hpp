@@ -15,6 +15,10 @@
 namespace buw 
 {
 
+  /**
+   * Naive algorithm for the Closest Pair problem
+   * @returns closest pair in a set of points.
+   */
   std::pair<Point, Point> bruteForce(std::vector<Point> const& points)
   {
     std::pair<Point, Point> closestPair;
@@ -37,6 +41,11 @@ namespace buw
     return closestPair;
   }
 
+  /**
+   * The Divide & Conquer algorithm
+   * Find the 2 closest points in a given set.
+   * @returns closest pair in a set of points
+   */
   std::pair<Point, Point> divideAndConquer(std::vector<Point> const& pointsSortedX, std::vector<Point> const& pointsSortedY)
   {
     unsigned int size = pointsSortedX.size();
@@ -102,6 +111,11 @@ namespace buw
     return bestPair;
   }
 
+  /**
+   * Utility function
+   * Will sort the points and return result of Divide & Conquer algorithm.
+   * @returns closest pair in a set of points
+   */
   std::pair<Point, Point> closestPair(std::vector<Point> const& points)
   {
     std::vector<Point> pointsSortedX{points};
